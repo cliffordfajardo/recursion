@@ -21,15 +21,16 @@ var stringifyJSON = function(obj) {
     var results = [];
     for(var i = 0; i < obj.length; i++){
       if(isUndefined( obj[i]) || isFunction(obj[i])) continue;
-      results.push(stringifyJSON(obj[i]))
+      results.push(stringifyJSON(obj[i]));
     }
     return "[" + results + "]";
-    })
   }
+  
 
   //Handling Objects
   if(isObject(obj)){
-    if(Object.keys(obj).length === 0) return "{}"; //handling empty objects
+    if(Object.keys(obj).length === 0) return "{}"; 
+
     var temp = [];
     for(var key in obj){
       if(isFunction(obj[key]) || isUndefined(obj[key])) continue;
