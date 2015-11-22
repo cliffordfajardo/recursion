@@ -1,10 +1,6 @@
-// this is what you would do if you liked things to be easy:
-// var stringifyJSON = JSON.stringify;
-
-// but you don't so you're going to write it from scratch:
-
-
-
+/*
+Reimplement JSON.stringfy by writing your own version of it.
+*/
 
 var stringifyJSON = function(obj) {
   //handling string, number, booleans,null,undefined, functions
@@ -25,19 +21,19 @@ var stringifyJSON = function(obj) {
     }
     return "[" + results + "]";
   }
-  
+
 
   //Handling Objects
   if(isObject(obj)){
-    if(Object.keys(obj).length === 0) return "{}"; 
+    if(Object.keys(obj).length === 0) return "{}";
 
     var temp = [];
     for(var key in obj){
       if(isFunction(obj[key]) || isUndefined(obj[key])) continue;
-      temp.push(stringifyJSON(key) + ":" + stringifyJSON(obj[key]))
+      temp.push(stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
     }
     console.log(temp);
-    return "{" + temp.join(",") + "}"
+    return "{" + temp.join(",") + "}";
   }
 };
 
@@ -75,19 +71,19 @@ function isString(obj) {
 function isFunction(obj){
   if(Object.prototype.toString.call(obj) === "[object Function]") return true;
   return false;
-} 
+}
 
 function isBoolean(obj){
   if(Object.prototype.toString.call(obj) === "[object Boolean]") return true;
   return false;
-} 
+}
 
 function isNull(obj){
   if(Object.prototype.toString.call(obj) === "[object Null]") return true;
   return false;
-} 
+}
 
 function isUndefined(obj){
   if(Object.prototype.toString.call(obj) === "[object Undefined]") return true;
   return false;
-} 
+}
